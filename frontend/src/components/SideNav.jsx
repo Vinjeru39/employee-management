@@ -21,7 +21,41 @@ const SideNav = () => {
       </Button>
       <Offcanvas show={show} onHide={handleClose} responsive="lg">
         <Offcanvas.Header closeButton>
-          <Offcanvas.Title>Responsive offcanvas</Offcanvas.Title>
+          <Nav className="flex-column">
+            <Nav.Link
+              href="/welcome"
+              className="mb-2 d-flex align-items-center"
+              style={{
+                fontSize: "14px",
+                color: "#343a40",
+                borderBottom: "1px solid #ddd", // Line separator
+              }}
+            >
+              <FaTachometerAlt className="me-2" /> Welcome
+            </Nav.Link>
+            <Nav.Link
+              href="/userlist"
+              className="my-2 d-flex align-items-center"
+              style={{
+                fontSize: "14px",
+                color: "#343a40",
+                borderBottom: "1px solid #ddd", // Line separator
+              }}
+            >
+              <FaUsers className="me-2" /> User List
+            </Nav.Link>
+            <Nav.Link
+              href="/adduser"
+              className="my-2 d-flex align-items-center"
+              style={{
+                fontSize: "14px",
+                color: "#343a40",
+                borderBottom: "1px solid #ddd", // Line separator
+              }}
+            >
+              <FaUserPlus className="me-2" /> Add Employee
+            </Nav.Link>
+          </Nav>
         </Offcanvas.Header>
         <Offcanvas.Body></Offcanvas.Body>
       </Offcanvas>

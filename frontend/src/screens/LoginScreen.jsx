@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { Form, Button, Row, Col } from "react-bootstrap";
+import { Form, Button, Row, Col, Spinner } from "react-bootstrap";
 
 import FormContainer from "../components/FormContainer";
 import Loader from "../components/Loader";
@@ -137,7 +137,7 @@ const LoginScreen = () => {
               fontSize: "0.75rem", // Smaller font size for hint
               color: "#6f42c1", // Purple color for email/password hint
               marginBottom: "16px", // Reduced margin-bottom
-              backgroundColor: "#f4e1f7", // Lighter purple background
+              backgroundColor: "#f0e8ff", // Lighter purple background
               padding: "8px", // Padding inside the background area
               borderRadius: "8px", // Rounded corners for the background area
             }}
@@ -249,20 +249,17 @@ const LoginScreen = () => {
               onMouseOver={(e) => (e.target.style.backgroundColor = "#5a2a9d")}
               onMouseOut={(e) => (e.target.style.backgroundColor = "#6f42c1")}
             >
+              {isLoading && (
+                <Spinner
+                  as="span"
+                  animation="border"
+                  size="sm"
+                  role="status"
+                  aria-hidden="true"
+                />
+              )}
               Login
             </Button>
-
-            {isLoading && (
-              <div
-                style={{
-                  marginTop: "12px",
-                  display: "flex",
-                  justifyContent: "center",
-                }}
-              >
-                <Loader />
-              </div>
-            )}
           </Form>
 
           <Row className="py-3">

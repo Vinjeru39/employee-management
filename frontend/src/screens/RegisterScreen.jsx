@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import { Form, Button, Row, Col } from "react-bootstrap";
+import { Form, Button, Row, Col, Spinner } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 
 import { setCredentials } from "../slices/authSlice";
@@ -274,20 +274,17 @@ const RegisterScreen = () => {
               onMouseOver={(e) => (e.target.style.backgroundColor = "#4b1f84")}
               onMouseOut={(e) => (e.target.style.backgroundColor = "#5a2a9d")}
             >
+              {isLoading && (
+                <Spinner
+                  as="span"
+                  animation="border"
+                  size="sm"
+                  role="status"
+                  aria-hidden="true"
+                />
+              )}
               Sign Up
             </Button>
-
-            {isLoading && (
-              <div
-                style={{
-                  marginTop: "15px",
-                  display: "flex",
-                  justifyContent: "center",
-                }}
-              >
-                <Loader />
-              </div>
-            )}
           </Form>
 
           <Row className="py-3">

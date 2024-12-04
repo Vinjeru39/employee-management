@@ -19,9 +19,6 @@ const authUser = asyncHandler(async (req, res) => {
       name: user.name,
       email: user.email,
       isAdmin: user.isAdmin,
-      employeeID: user.employeeID,
-      grade: user.grade,
-      jobTitle: user.jobTitle,
     });
   } else {
     res.status(401);
@@ -55,10 +52,8 @@ const registerUser = asyncHandler(async (req, res) => {
       email: user.email,
       isAdmin: user.isAdmin,
     });
-    console.log("We getting here A:A:A:A:");
   } else {
     res.status(400);
-    console.log("NONONON");
     throw new Error("Invalid user data");
   }
 });
