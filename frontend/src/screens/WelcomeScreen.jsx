@@ -10,17 +10,17 @@ const Welcome = () => {
       style={{
         display: "flex",
         justifyContent: "center",
-        alignItems: "flex-start",
-        height: "100vh",
-        backgroundColor: "#f0f0f0",
+        height: "60vh",
+        backgroundColor: "#f8f9fa", // Matching the LoginScreen background
         paddingTop: "50px",
+        marginLeft: "300px",
       }}
     >
       <div
         className="card"
         style={{
-          padding: "30px 60px",
-          borderRadius: "10px",
+          padding: "40px 50px",
+          borderRadius: "12px",
           backgroundColor: "#fff",
           boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
           textAlign: "center",
@@ -30,13 +30,21 @@ const Welcome = () => {
       >
         <h3
           style={{
-            fontSize: "30px",
+            fontSize: "28px",
             fontWeight: "bold",
-            color: "#333",
+            color: "#6f42c1", // Same brand color as LoginScreen
           }}
         >
-          Welcome {userInfo?.name}
+          Adventure starts here!
         </h3>
+        <p
+          style={{
+            fontSize: "18px",
+            color: "#6c757d", // Muted secondary text color
+          }}
+        >
+          Welcome {userInfo?.name}, make your app management easy and fun!
+        </p>
       </div>
     </div>
   );

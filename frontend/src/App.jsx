@@ -19,14 +19,19 @@ function App() {
           </Col>
         )} */}
       {userInfo ? (
-        <Row>
-          <Col md={2}>
-            <SideNav />
-          </Col>
-          <Col md={10}>
-            <Outlet />
-          </Col>
-        </Row>
+        <>
+          <Header />
+          <Row style={{ marginTop: "90px" }}>
+            <div>
+              <Col md={2}>
+                <SideNav />
+              </Col>
+              <Col md={10}>
+                <Outlet />
+              </Col>
+            </div>
+          </Row>
+        </>
       ) : (
         <Outlet />
       )}
