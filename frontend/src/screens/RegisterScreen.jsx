@@ -10,6 +10,7 @@ import Loader from "../components/Loader";
 import Logo from "../components/Logo";
 
 import image2 from "../images/image-2.png"; // Updated image import
+import rocket from "../images/rocket.png"; // Updated image import
 
 const redirect = "/welcome";
 
@@ -60,32 +61,48 @@ const RegisterScreen = () => {
           style={{
             display: "flex",
             flexDirection: "column",
-            justifyContent: "center",
+            justifyContent: "flex-start", // Align items to the top
             alignItems: "flex-start",
-            padding: "20px",
+            padding: "0", // Ensure there's no padding
+            height: "100%", // Full height for the column
           }}
         >
-          <Row className="align-items-center mb-3" style={{ width: "100%" }}>
+          <Row
+            className="align-items-center"
+            style={{ width: "100%", marginBottom: 0 }}
+          >
             <Col
               style={{
                 display: "flex",
                 alignItems: "center",
-                paddingLeft: "0",
-                marginLeft: "20px", // Adjust margin as needed
+                paddingLeft: "0", // Remove padding to align with the parent
+                marginLeft: "50px", // Keep as is or adjust
+                marginBottom: "0", // Remove bottom margin to avoid gap between logo and image
               }}
             >
               <Logo style={{ color: "#6f42c1" }} />
-              <h3 style={{ color: "#343a40", marginLeft: "10px" }}>Vuexy</h3>
+              <h3
+                style={{
+                  color: "#343a40",
+                  marginLeft: "10px",
+                  marginTop: "0", // Remove margin-top to eliminate space
+                }}
+              >
+                Vuexy
+              </h3>
             </Col>
           </Row>
 
+          {/* Image below the logo with negative margin to reduce space */}
           <img
-            src={image2} // Updated image
+            src={image2}
             alt="Background"
             style={{
-              width: "100%",
-              maxHeight: "100vh",
-              objectFit: "cover",
+              width: "100%", // Full width of the column
+              maxHeight: "80vh", // Control image height, adjust as needed
+              objectFit: "contain", // Ensure the image scales properly
+              marginTop: "0px", // Negative margin to reduce space between image and header
+              marginBottom: "0", // Ensure no bottom margin
             }}
           />
         </Col>
@@ -99,6 +116,7 @@ const RegisterScreen = () => {
             boxShadow: "0 1px 5px rgba(0, 0, 0, 0.1)",
             width: "100%",
             maxWidth: "400px",
+            height: "100vh",
             margin: "auto",
           }}
         >
@@ -110,7 +128,7 @@ const RegisterScreen = () => {
               marginBottom: "10px",
             }}
           >
-            Adventure starts here!
+            Adventure starts here 🚀
           </h4>
 
           <p
@@ -126,8 +144,16 @@ const RegisterScreen = () => {
           </p>
 
           <Form onSubmit={submitHandler}>
-            <Form.Group controlId="name" className="my-3">
-              <Form.Label>Name</Form.Label>
+            <Form.Group controlId="name" style={{ marginBottom: "8px" }}>
+              <Form.Label
+                style={{
+                  fontSize: "0.85rem",
+                  color: "#343a40",
+                  marginBottom: "5px",
+                }}
+              >
+                Name
+              </Form.Label>
               <Form.Control
                 type="text"
                 placeholder="Enter Name"
@@ -135,7 +161,8 @@ const RegisterScreen = () => {
                 onChange={(e) => setName(e.target.value)}
                 required
                 style={{
-                  padding: "10px",
+                  padding: "6px 10px", // Reduced padding for smaller height
+                  fontSize: "0.85rem", // Smaller text size
                   borderRadius: "8px",
                   border: "1px solid #ced4da",
                   backgroundColor: "#f1f3f5",
@@ -143,8 +170,16 @@ const RegisterScreen = () => {
               />
             </Form.Group>
 
-            <Form.Group controlId="email" className="my-3">
-              <Form.Label>Email</Form.Label>
+            <Form.Group controlId="email" style={{ marginBottom: "8px" }}>
+              <Form.Label
+                style={{
+                  fontSize: "0.85rem",
+                  color: "#343a40",
+                  marginBottom: "5px",
+                }}
+              >
+                Email
+              </Form.Label>
               <Form.Control
                 type="email"
                 placeholder="Enter email address"
@@ -152,7 +187,8 @@ const RegisterScreen = () => {
                 onChange={(e) => setEmail(e.target.value)}
                 required
                 style={{
-                  padding: "10px",
+                  padding: "6px 10px", // Reduced padding for smaller height
+                  fontSize: "0.85rem", // Smaller text size
                   borderRadius: "8px",
                   border: "1px solid #ced4da",
                   backgroundColor: "#f1f3f5",
@@ -160,8 +196,16 @@ const RegisterScreen = () => {
               />
             </Form.Group>
 
-            <Form.Group controlId="password" className="my-3">
-              <Form.Label>Password</Form.Label>
+            <Form.Group controlId="password" style={{ marginBottom: "8px" }}>
+              <Form.Label
+                style={{
+                  fontSize: "0.85rem",
+                  color: "#343a40",
+                  marginBottom: "5px",
+                }}
+              >
+                Password
+              </Form.Label>
               <Form.Control
                 type="password"
                 placeholder="Enter password"
@@ -169,7 +213,8 @@ const RegisterScreen = () => {
                 onChange={(e) => setPassword(e.target.value)}
                 required
                 style={{
-                  padding: "10px",
+                  padding: "6px 10px", // Reduced padding for smaller height
+                  fontSize: "0.85rem", // Smaller text size
                   borderRadius: "8px",
                   border: "1px solid #ced4da",
                   backgroundColor: "#f1f3f5",
@@ -182,14 +227,14 @@ const RegisterScreen = () => {
                 display: "flex",
                 justifyContent: "space-between",
                 alignItems: "center",
-                marginBottom: "20px",
+                marginBottom: "15px", // Reduced bottom margin
               }}
             >
               <div>
                 <label
                   htmlFor="agree"
                   style={{
-                    fontSize: "0.85rem",
+                    fontSize: "0.75rem", // Smaller font size for the checkbox label
                     color: "#343a40",
                   }}
                 >
@@ -208,14 +253,7 @@ const RegisterScreen = () => {
                     href="/privacy-policy"
                     style={{ color: "#6f42c1", textDecoration: "none" }}
                   >
-                    privacy policy
-                  </a>{" "}
-                  and{" "}
-                  <a
-                    href="/terms"
-                    style={{ color: "#6f42c1", textDecoration: "none" }}
-                  >
-                    terms
+                    privacy policy and terms
                   </a>
                 </label>
               </div>
@@ -224,19 +262,19 @@ const RegisterScreen = () => {
             <Button
               type="submit"
               variant="primary"
-              className="mt-3 w-100"
+              className="mt-2 w-100" // Reduced top margin for the button
               disabled={isLoading || !agree}
               style={{
-                padding: "10px 0",
-                fontSize: "1.1rem",
+                padding: "6px 0", // Reduced padding for smaller button height
+                fontSize: "0.85rem", // Smaller text size
                 borderRadius: "8px",
-                backgroundColor: "#6f42c1",
-                borderColor: "#6f42c1",
+                backgroundColor: "#5a2a9d", // Darker purple color
+                borderColor: "#5a2a9d", // Darker border
               }}
-              onMouseOver={(e) => (e.target.style.backgroundColor = "#5a2a9d")}
-              onMouseOut={(e) => (e.target.style.backgroundColor = "#6f42c1")}
+              onMouseOver={(e) => (e.target.style.backgroundColor = "#4b1f84")}
+              onMouseOut={(e) => (e.target.style.backgroundColor = "#5a2a9d")}
             >
-              Register
+              Sign Up
             </Button>
 
             {isLoading && (
@@ -253,7 +291,7 @@ const RegisterScreen = () => {
           </Form>
 
           <Row className="py-3">
-            <Col style={{ textAlign: "center", fontSize: "0.9rem" }}>
+            <Col style={{ textAlign: "center", fontSize: "0.85rem" }}>
               Already have an account?{" "}
               <Link
                 to="/"

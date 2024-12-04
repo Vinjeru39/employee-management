@@ -44,42 +44,54 @@ const LoginScreen = () => {
 
   return (
     <div>
-      <Row style={{ height: "100vh" }}>
+      <Row>
         <Col
           md={7}
           style={{
-            display: "flex", // Use flexbox to center the content
-            flexDirection: "column", // Stack items vertically
-            justifyContent: "center", // Center the content vertically
-            alignItems: "flex-start", // Align items to the left
-            padding: "20px", // Padding around the content
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "flex-start", // Align items to the top
+            alignItems: "flex-start",
+            padding: "0", // Ensure there's no padding
+            height: "100%", // Full height for the column
           }}
         >
-          <Row className="align-items-center mb-3" style={{ width: "100%" }}>
-            {/* Row with vertical centering and margin-bottom */}
+          <Row
+            className="align-items-center"
+            style={{ width: "100%", marginBottom: 0 }}
+          >
             <Col
               style={{
                 display: "flex",
                 alignItems: "center",
-                paddingLeft: "0",
-                marginLeft: "20px", // Adjust the value to your preference
+                paddingLeft: "0", // Remove padding to align with the parent
+                marginLeft: "50px", // Keep as is or adjust
+                marginBottom: "0", // Remove bottom margin to avoid gap between logo and image
               }}
             >
-              {/* Column for the logo and text */}
               <Logo style={{ color: "#6f42c1" }} />
-              <h3 style={{ color: "#343a40", marginLeft: "10px" }}>Vuexy</h3>
-              {/* Purple color for the logo and text color for Vuexy */}
+              <h3
+                style={{
+                  color: "#343a40",
+                  marginLeft: "10px",
+                  marginTop: "0", // Remove margin-top to eliminate space
+                }}
+              >
+                Vuexy
+              </h3>
             </Col>
           </Row>
 
-          {/* Image below the logo */}
+          {/* Image below the logo with negative margin to reduce space */}
           <img
             src={image1}
             alt="Background"
             style={{
-              width: "100%", // Make the image responsive to the column width
-              maxHeight: "100vh", // Ensure the image does not exceed the viewport height
-              objectFit: "cover", // Ensure the image covers the space without distortion
+              width: "100%", // Full width of the column
+              maxHeight: "80vh", // Control image height, adjust as needed
+              objectFit: "contain", // Ensure the image scales properly
+              marginTop: "0px", // Negative margin to reduce space between image and header
+              marginBottom: "0", // Ensure no bottom margin
             }}
           />
         </Col>
@@ -89,7 +101,7 @@ const LoginScreen = () => {
           style={{
             backgroundColor: "rgba(255, 255, 255, 0.8)", // Semi-transparent background for the content area
             borderRadius: "8px",
-            padding: "20px",
+            padding: "15px", // Reduced padding for a more compact look
             boxShadow: "0 1px 5px rgba(0, 0, 0, 0.1)", // Reduced shadow for less elevation
             width: "100%",
             maxWidth: "400px",
@@ -99,12 +111,12 @@ const LoginScreen = () => {
           <h4
             style={{
               textAlign: "left",
-              fontSize: "1.3rem", // Smaller heading size
+              fontSize: "1.1rem", // Smaller heading size
               color: "#343a40",
-              marginBottom: "10px",
+              marginBottom: "8px", // Reduced margin-bottom
             }}
           >
-            Welcome to Vuexy!
+            Welcome to Vuexy! 👋🏻
           </h4>
 
           <p
@@ -112,7 +124,7 @@ const LoginScreen = () => {
               textAlign: "left",
               fontSize: "0.85rem", // Slightly reduced font size for a more compact look
               lineHeight: "1.2", // Adjust line height for better readability
-              marginBottom: "10px", // Reduced space between lines
+              marginBottom: "8px", // Reduced space between lines
               color: "#aaa", // Lighter color for faint text
             }}
           >
@@ -122,11 +134,11 @@ const LoginScreen = () => {
           <div
             style={{
               textAlign: "left",
-              fontSize: "0.85rem",
+              fontSize: "0.75rem", // Smaller font size for hint
               color: "#6f42c1", // Purple color for email/password hint
-              marginBottom: "20px",
+              marginBottom: "16px", // Reduced margin-bottom
               backgroundColor: "#f4e1f7", // Lighter purple background
-              padding: "10px", // Padding inside the background area
+              padding: "8px", // Padding inside the background area
               borderRadius: "8px", // Rounded corners for the background area
             }}
           >
@@ -134,15 +146,23 @@ const LoginScreen = () => {
           </div>
 
           <Form onSubmit={submitHandler}>
-            <Form.Group controlId="email" className="my-3">
-              <Form.Label>Email </Form.Label>
+            <Form.Group controlId="email" className="my-2">
+              <Form.Label
+                style={{
+                  fontSize: "0.85rem", // Smaller font size for label
+                  marginBottom: "5px", // Reduced bottom margin
+                }}
+              >
+                Email
+              </Form.Label>
               <Form.Control
                 type="email"
                 placeholder="Enter email address"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 style={{
-                  padding: "10px",
+                  padding: "6px 10px", // Reduced padding for smaller height
+                  fontSize: "0.85rem", // Smaller text size
                   borderRadius: "8px",
                   border: "1px solid #ced4da",
                   backgroundColor: "#f1f3f5",
@@ -150,15 +170,23 @@ const LoginScreen = () => {
               />
             </Form.Group>
 
-            <Form.Group controlId="password" className="my-3">
-              <Form.Label>Password</Form.Label>
+            <Form.Group controlId="password" className="my-2">
+              <Form.Label
+                style={{
+                  fontSize: "0.85rem", // Smaller font size for label
+                  marginBottom: "5px", // Reduced bottom margin
+                }}
+              >
+                Password
+              </Form.Label>
               <Form.Control
                 type="password"
                 placeholder="Enter password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 style={{
-                  padding: "10px",
+                  padding: "6px 10px", // Reduced padding for smaller height
+                  fontSize: "0.85rem", // Smaller text size
                   borderRadius: "8px",
                   border: "1px solid #ced4da",
                   backgroundColor: "#f1f3f5",
@@ -171,34 +199,33 @@ const LoginScreen = () => {
                 display: "flex",
                 justifyContent: "space-between", // Align checkbox and link on the same line
                 alignItems: "center",
-                marginBottom: "20px",
+                marginBottom: "16px", // Reduced bottom margin
               }}
             >
               <div>
                 <label
                   htmlFor="rememberMe"
                   style={{
-                    fontSize: "0.85rem",
-                    marginRight: "5px", // Margin between checkbox and label
+                    fontSize: "0.75rem", // Smaller font size for the label
                     color: "#343a40", // Standard text color
                   }}
                 >
+                  <input
+                    type="checkbox"
+                    id="rememberMe"
+                    style={{
+                      transform: "scale(1.2)", // Make the checkbox slightly larger
+                      accentColor: "#6f42c1", // Purple color when checked
+                    }}
+                  />{" "}
                   Remember me
                 </label>
-                <input
-                  type="checkbox"
-                  id="rememberMe"
-                  style={{
-                    transform: "scale(1.2)", // Make the checkbox slightly larger
-                    accentColor: "#6f42c1", // Purple color when checked
-                  }}
-                />
               </div>
 
               <Link
                 to="#"
                 style={{
-                  fontSize: "0.85rem",
+                  fontSize: "0.75rem", // Smaller font size for 'Forgot password'
                   color: "#6f42c1", // Purple color for 'Forgot Password'
                   textDecoration: "none",
                 }}
@@ -210,11 +237,11 @@ const LoginScreen = () => {
             <Button
               type="submit"
               variant="primary"
-              className="mt-3 w-100"
+              className="mt-2 w-100"
               disabled={isLoading}
               style={{
-                padding: "10px 0",
-                fontSize: "1.1rem",
+                padding: "6px 0", // Reduced padding for smaller button height
+                fontSize: "0.85rem", // Smaller text size
                 borderRadius: "8px",
                 backgroundColor: "#6f42c1", // Purple button
                 borderColor: "#6f42c1",
@@ -228,7 +255,7 @@ const LoginScreen = () => {
             {isLoading && (
               <div
                 style={{
-                  marginTop: "15px",
+                  marginTop: "12px",
                   display: "flex",
                   justifyContent: "center",
                 }}
@@ -239,11 +266,10 @@ const LoginScreen = () => {
           </Form>
 
           <Row className="py-3">
-            <Col style={{ textAlign: "center", fontSize: "0.9rem" }}>
+            <Col style={{ textAlign: "center", fontSize: "0.85rem" }}>
               New on our platform?{" "}
               <Link
                 to="/register"
-                disabled={true}
                 style={{
                   textDecoration: "none",
                   color: "#6f42c1", // Purple color for the link
