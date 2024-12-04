@@ -21,12 +21,13 @@ import UserListScreen from "./screens/UserListScreen.jsx";
 import NotificationsScreen from "./screens/NotificationsScreen.jsx";
 import WelcomeScreen from "./screens/WelcomeScreen.jsx";
 import EditUserScreen from "./screens/EditUserScreen.jsx";
+import RegisterScreen from "./screens/RegisterScreen.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<App />}>
       <Route index={true} path="/" element={<LoginScreen />} />
-      <Route path="/signin" element={<LoginScreen />} />
+      <Route path="/register" element={<RegisterScreen />} />
       <Route path="" element={<PrivateRoute />}>
         <Route path="/welcome" element={<WelcomeScreen />} />
         <Route path="/notifications" element={<NotificationsScreen />} />

@@ -11,6 +11,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useLogoutMutation } from "../slices/usersApiSlice";
 import { logout } from "../slices/authSlice";
 import { FaUsersCog } from "react-icons/fa";
+import Logo from "./Logo";
 
 import NotificationOverlay from "./NotificationOverlay";
 
@@ -32,27 +33,21 @@ function Header() {
 
   return (
     <header>
-      <Navbar
-        expand="lg"
-        bg="dark"
-        variant="dark"
-        className="mb-3 shadow-sm"
-        fixed="top"
-      >
+      <Navbar expand="lg" className="mb-3 shadow-sm" fixed="top">
         <Container>
           <LinkContainer to="/">
             <Navbar.Brand
               href="#home"
-              className="fw-bold text-white d-flex align-items-center"
+              className="fw-bold  d-flex align-items-center"
             >
               {/* Adding the New Icon */}
-              <FaUsersCog className="me-2" size={30} /> Employee Management
+              <Logo /> Vuexy
             </Navbar.Brand>
           </LinkContainer>
           <Navbar.Toggle aria-controls="basic-Navbar-nav" />
           <Navbar.Collapse id="basic-Navbar-nav">
             <Nav className="ms-auto">
-              {userInfo ? (
+              {userInfo && (
                 <>
                   <NotificationOverlay />
                   <NavDropdown
@@ -69,12 +64,6 @@ function Header() {
                     </NavDropdown.Item>
                   </NavDropdown>
                 </>
-              ) : (
-                <LinkContainer to="/signin">
-                  <Nav.Link className="text-white fw-medium hover-link">
-                    Login
-                  </Nav.Link>
-                </LinkContainer>
               )}
             </Nav>
           </Navbar.Collapse>

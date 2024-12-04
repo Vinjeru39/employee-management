@@ -13,20 +13,13 @@ function App() {
 
   return (
     <>
-      <Header />
-      <Row style={{ marginTop: "57px", paddingBottom: "50px" }}>
-        {userInfo && (
+      {/* {userInfo && (
           <Col md={2}>
             <SideNav />
           </Col>
-        )}
+        )} */}
 
-        <Col>
-          <Container style={{ marginTop: "20px" }}>
-            <Outlet />
-          </Container>
-        </Col>
-      </Row>
+      <Outlet />
 
       <ToastContainer />
     </>
