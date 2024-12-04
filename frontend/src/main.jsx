@@ -21,6 +21,7 @@ import UserListScreen from "./screens/UserListScreen.jsx";
 import NotificationsScreen from "./screens/NotificationsScreen.jsx";
 import WelcomeScreen from "./screens/WelcomeScreen.jsx";
 import EditUserScreen from "./screens/EditUserScreen.jsx";
+import AdminRoute from "./components/AdminRoute.jsx";
 import RegisterScreen from "./screens/RegisterScreen.jsx";
 
 const router = createBrowserRouter(
@@ -31,6 +32,8 @@ const router = createBrowserRouter(
       <Route path="" element={<PrivateRoute />}>
         <Route path="/welcome" element={<WelcomeScreen />} />
         <Route path="/notifications" element={<NotificationsScreen />} />
+      </Route>
+      <Route path="" element={<AdminRoute />}>
         <Route path="/userlist" element={<UserListScreen />} />
         <Route path="/adduser" element={<AddUserScreen />} />
         <Route path="/edituser/:id" element={<EditUserScreen />} />

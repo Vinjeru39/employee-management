@@ -54,7 +54,7 @@ const EditUserScreen = () => {
       <FormContainer>
         <div className="form-box shadow-lg p-5 rounded">
           <h1 className="form-title" style={{ color: "#6f42c1" }}>
-            Edit Employee Details
+            Edit User Details
           </h1>
           <Form onSubmit={submitHandler}>
             <Form.Group controlId="name" className="my-3">

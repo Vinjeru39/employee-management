@@ -29,12 +29,12 @@ const UserListScreen = () => {
     <Container style={{ marginLeft: "185px", paddingRight: "50px" }}>
       <Row className="d-flex justify-content-between mb-4">
         <Col>
-          <h3 style={{ color: "#6f42c1" }}>Manage Employees</h3>
+          <h3 style={{ color: "#6f42c1" }}>Manage Users</h3>
         </Col>
         <Col className="text-end">
           <LinkContainer to="/adduser">
             <Button className="btn-gradient-primary" variant="secondary">
-              Add Employee
+              Add User
             </Button>
           </LinkContainer>
         </Col>
@@ -61,7 +61,7 @@ const UserListScreen = () => {
         >
           <thead className="bg-purple text-white">
             <tr>
-              <th>Employee ID</th>
+              <th>User ID</th>
               <th>Name</th>
               <th>Email</th>
               <th>Admin</th>

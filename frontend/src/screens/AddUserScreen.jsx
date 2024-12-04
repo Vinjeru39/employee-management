@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Form, Button } from "react-bootstrap";
 
@@ -6,6 +6,7 @@ import FormContainer from "../components/FormContainer";
 import Loader from "../components/Loader";
 import { useAddUserMutation } from "../slices/usersApiSlice";
 import { toast } from "react-toastify";
+import { useSelector } from "react-redux";
 
 const AddUserScreen = () => {
   const [name, setName] = useState("");
@@ -31,7 +32,7 @@ const AddUserScreen = () => {
       <FormContainer>
         <div className="form-box shadow-lg p-5 rounded">
           <h1 className="form-title" style={{ color: "#6f42c1" }}>
-            Add New Employee
+            Add New User
           </h1>
           <Form onSubmit={submitHandler}>
             <Form.Group controlId="name" className="my-3">
