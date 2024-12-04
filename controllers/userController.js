@@ -122,19 +122,15 @@ const updateUser = asyncHandler(async (req, res) => {
   if (user) {
     user.name = req.body.name || user.name;
     user.email = req.body.email || user.email;
-    user.jobTitle = req.body.jobTitle || user.jobTitle;
-    user.employeeID = req.body.employeeID || user.employeeID;
-    user.grade = req.body.grade || user.grade;
+    user.password = req.body.passowrd || user.password;
 
     const updatedUser = await user.save();
     res.status(200).json({
       _id: updatedUser._id,
       name: updatedUser._name,
       email: updatedUser.email,
+      password: updatedUser.passowrd,
       isAdmin: updatedUser.isAdmin,
-      jobTitle: updatedUser.jobTitle,
-      employeeID: updatedUser.employeeID,
-      grade: updatedUser.grade,
     });
   } else {
     res.status(404);

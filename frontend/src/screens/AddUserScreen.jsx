@@ -4,7 +4,7 @@ import { Form, Button } from "react-bootstrap";
 
 import FormContainer from "../components/FormContainer";
 import Loader from "../components/Loader";
-import { useRegisterMutation } from "../slices/usersApiSlice";
+import { useAddUserMutation } from "../slices/usersApiSlice";
 import { toast } from "react-toastify";
 
 const AddUserScreen = () => {
@@ -14,12 +14,12 @@ const AddUserScreen = () => {
 
   const navigate = useNavigate();
 
-  const [register, { isLoading }] = useRegisterMutation();
+  const [addUser, { isLoading }] = useAddUserMutation();
 
   const submitHandler = async (e) => {
     e.preventDefault();
     try {
-      const res = await register({ name, email, password }).unwrap();
+      const res = await addUser({ name, email, password }).unwrap();
       navigate("/userlist"); // assuming you want to navigate to the homepage
     } catch (err) {
       toast.error(err?.data?.message || err.error);
@@ -30,7 +30,9 @@ const AddUserScreen = () => {
     <div style={{ marginLeft: "140px", width: "100%" }}>
       <FormContainer>
         <div className="form-box shadow-lg p-5 rounded">
-          <h1 className="form-title">Add New Employee</h1>
+          <h1 className="form-title" style={{ color: "#6f42c1" }}>
+            Add New Employee
+          </h1>
           <Form onSubmit={submitHandler}>
             <Form.Group controlId="name" className="my-3">
               <Form.Label>Name</Form.Label>
