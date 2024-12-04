@@ -1,7 +1,9 @@
 import { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { Form, Button, Row, Col } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
 
+import { setCredentials } from "../slices/authSlice";
 import { useRegisterMutation } from "../slices/usersApiSlice";
 import { toast } from "react-toastify";
 import Loader from "../components/Loader";
@@ -9,13 +11,18 @@ import Logo from "../components/Logo";
 
 import image2 from "../images/image-2.png"; // Updated image import
 
+const redirect = "/welcome";
+
 const RegisterScreen = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [agree, setAgree] = useState(false);
 
+  const { userInfo } = useSelector((state) => state.auth);
+
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const [register, { isLoading }] = useRegisterMutation();
 
@@ -31,11 +38,19 @@ const RegisterScreen = () => {
         email,
         password,
       }).unwrap();
-      navigate("/userlist"); // assuming you want to navigate to the homepage
+      dispatch(setCredentials({ ...res }));
+      console.log("I got here");
+      navigate(redirect); // assuming you want to navigate to the homepage
     } catch (err) {
       toast.error(err?.data?.message || err.error);
     }
   };
+
+  useEffect(() => {
+    if (userInfo) {
+      navigate(redirect);
+    }
+  }, [userInfo, navigate, redirect]);
 
   return (
     <div>
@@ -241,7 +256,7 @@ const RegisterScreen = () => {
             <Col style={{ textAlign: "center", fontSize: "0.9rem" }}>
               Already have an account?{" "}
               <Link
-                to="/login"
+                to="/"
                 style={{
                   textDecoration: "none",
                   color: "#6f42c1",

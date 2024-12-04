@@ -33,8 +33,7 @@ const authUser = asyncHandler(async (req, res) => {
 // @route POST /api/users/
 // @access Public
 const registerUser = asyncHandler(async (req, res) => {
-  const { name, email, password, employeeID, grade, jobTitle } = req.body;
-  //isAdmin to be handled later. Will probably be from an admin register route where only admins can set this when creating a user
+  const { name, email, password } = req.body;
 
   const userExists = await User.findOne({ email });
   if (userExists) {
@@ -46,23 +45,20 @@ const registerUser = asyncHandler(async (req, res) => {
     name,
     email,
     password,
-    employeeID,
-    grade,
-    jobTitle,
   });
 
   if (user) {
+    generateToken(res, user._id);
     res.status(201).json({
       _id: user._id,
       name: user.name,
       email: user.email,
       isAdmin: user.isAdmin,
-      employeeID: user.employeeID,
-      grade: user.grade,
-      jobTitle: user.jobTitle,
     });
+    console.log("We getting here A:A:A:A:");
   } else {
     res.status(400);
+    console.log("NONONON");
     throw new Error("Invalid user data");
   }
 });
@@ -146,6 +142,35 @@ const updateUser = asyncHandler(async (req, res) => {
   }
 });
 
+const addUser = asyncHandler(async (req, res) => {
+  const { name, email, password } = req.body;
+  //isAdmin to be handled later. Will probably be from an admin register route where only admins can set this when creating a user
+
+  const userExists = await User.findOne({ email });
+  if (userExists) {
+    res.status(400); //client error
+    throw new error("User already exists");
+  }
+
+  const user = await User.create({
+    name,
+    email,
+    password,
+  });
+
+  if (user) {
+    res.status(201).json({
+      _id: user._id,
+      name: user.name,
+      email: user.email,
+      isAdmin: user.isAdmin,
+    });
+  } else {
+    res.status(400);
+    throw new Error("Invalid user data");
+  }
+});
+
 export {
   authUser,
   registerUser,
@@ -154,4 +179,5 @@ export {
   deleteUser,
   getUserById,
   updateUser,
+  addUser,
 };

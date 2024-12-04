@@ -23,15 +23,12 @@ const userSchema = new mongoose.Schema(
     },
     employeeID: {
       type: String,
-      required: true,
     },
     grade: {
       type: String,
-      required: true,
     },
     jobTitle: {
       type: String,
-      required: true,
     },
   },
   {

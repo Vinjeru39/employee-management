@@ -18,8 +18,18 @@ function App() {
             <SideNav />
           </Col>
         )} */}
-
-      <Outlet />
+      {userInfo ? (
+        <Row>
+          <Col md={2}>
+            <SideNav />
+          </Col>
+          <Col md={10}>
+            <Outlet />
+          </Col>
+        </Row>
+      ) : (
+        <Outlet />
+      )}
 
       <ToastContainer />
     </>
