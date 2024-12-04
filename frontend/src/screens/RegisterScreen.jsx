@@ -126,6 +126,7 @@ const RegisterScreen = () => {
               fontSize: "1.3rem",
               color: "#343a40",
               marginBottom: "10px",
+              marginTop: "8px",
             }}
           >
             Adventure starts here 🚀

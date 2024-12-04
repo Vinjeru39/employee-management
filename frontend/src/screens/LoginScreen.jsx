@@ -111,9 +111,10 @@ const LoginScreen = () => {
           <h4
             style={{
               textAlign: "left",
-              fontSize: "1.1rem", // Smaller heading size
+              fontSize: "1.3rem", // Smaller heading size
               color: "#343a40",
               marginBottom: "8px", // Reduced margin-bottom
+              marginTop: "6px",
             }}
           >
             Welcome to Vuexy! 👋🏻
